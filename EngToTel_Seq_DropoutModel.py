@@ -141,7 +141,7 @@ eng_vocab_size = len(eng_tokenizer.word_index) + 1
 eng_length = 43
 print('English Vocabulary Size: %d' % eng_vocab_size)
 
-# prepare Telugu tokenizer
+# prepare Telugu  tokenizer
 tel_tokenizer = tokenization(data_df["telugu_sentances"])
 tel_vocab_size = len(tel_tokenizer.word_index) + 1
 
@@ -170,9 +170,9 @@ testY = encode_sequences(tel_tokenizer, tel_length, test["telugu_sentances"])
 trainX.shape,trainY.shape,testX.shape,testY.shape
 
 # data generator, intended to be used in a call to model.fit_generator()
-# def data_generator(eng_tokenizer,tel_tokenizer, eng_length,tel_length, eng_data,tel_data):
+# def data_generator (eng_tokenizer,tel_tokenizer, eng_length,tel_length, eng_data,tel_data) :
 #     # loop for each sentance
-#     while 1:
+#     while 1 :
 #         for eng_sentance,tel_sentance in zip(eng_data,tel_data):
 #             # integer encode sequences
 #             eng_seq = eng_tokenizer.texts_to_sequences(eng_sentance)
@@ -236,7 +236,7 @@ model.save(project_path+'NMT_model1')
 
 # convert the history.history dict to a pandas DataFrame:     
 # hist_df = pd.DataFrame(history.history) 
-# save to json:  
+# save to  json:  
 # hist_json_file = project_path+'history.json' 
 # with open(hist_json_file, mode='w') as f:
 plt.plot(history.history['loss'])
@@ -254,6 +254,7 @@ eng_actual = test["english_sentances"].values
 eng_actual = eng_actual[idx]
 # get 10 actual telugu sentences
 actual = test["telugu_sentances"].values
+
 actual = actual[idx]
 
 # load model weights
@@ -272,6 +273,7 @@ for i in preds:
     temp = []
     for j in range(len(i)):
         t = get_word(i[j], tel_tokenizer)
+        
         if j > 0:
             if (t == get_word(i[j-1], tel_tokenizer)) or (t == None):
                 temp.append('')
