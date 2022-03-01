@@ -239,10 +239,10 @@ model.save(project_path+'NMT_model1')
 # save to json:  
 # hist_json_file = project_path+'history.json' 
 # with open(hist_json_file, mode='w') as f:
-#     hist_df.to_json(f)
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
 plt.legend(['train','validation'])
+#     hist_df.to_json(f)
 plt.show()
 
 # get 10 random ids of test samples
