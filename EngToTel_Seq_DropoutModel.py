@@ -84,7 +84,7 @@ def clean_eng(text):
     # Remove extra spaces
     text= text.strip()
 
-    return text
+    return text 
 
 # clean telugu sentances
 def clean_tel(text):
@@ -93,12 +93,12 @@ def clean_tel(text):
     # Remove quotes
     text = re.sub("'", '', text)
     # Remove all the special characters
-    exclude = set(string.punctuation) # Set of all special characters
+    exclude = set(string.punctuation)  # Set of all special characters
     text = ''.join([c for c in text if c not in exclude])
     # Remove all numbers from text
     remove_digits = str.maketrans('', '', digits)
     text = text.translate(remove_digits)
-    # Remove Telugu numbers from text
+    # Remove Telugu numbers  from text
     text = re.sub("[౦౧౨౩౪౫౬౭౮౯]", '', text)
     # Remove extra spaces
     text= text.strip()
@@ -148,7 +148,7 @@ tel_vocab_size = len(tel_tokenizer.word_index) + 1
 tel_length = 26
 print('Telugu Vocabulary Size: %d' % tel_vocab_size)
 
-# encode and pad sequences
+# encode and  pad sequences
 def encode_sequences(tokenizer, length, lines):
     # integer encode sequences
     seq = tokenizer.texts_to_sequences(lines)
@@ -173,6 +173,7 @@ trainX.shape,trainY.shape,testX.shape,testY.shape
 # def data_generator (eng_tokenizer,tel_tokenizer, eng_length,tel_length, eng_data,tel_data) :
 #     # loop for each sentance
 #     while 1 :
+
 #         for eng_sentance,tel_sentance in zip(eng_data,tel_data):
 #             # integer encode sequences
 #             eng_seq = eng_tokenizer.texts_to_sequences(eng_sentance)
@@ -181,6 +182,7 @@ trainX.shape,trainY.shape,testX.shape,testY.shape
 #             eng_seq = pad_sequences(eng_seq, maxlen=eng_length, padding='post')
 #             tel_seq = pad_sequences(tel_seq, maxlen=tel_length, padding='post')
 #             yield eng_seq,tel_seq
+
 
 # build NMT model
 def define_model(in_vocab,out_vocab, in_timesteps,out_timesteps,units):
@@ -203,6 +205,7 @@ model.compile(optimizer=rms, loss='sparse_categorical_crossentropy')
 
 # Defining a helper function to save the model after each epoch 
 # in which the loss decreases 
+
 filepath = project_path+'NMT_model.h5'
 checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
 # Defining a helper function to reduce the learning rate each time 
@@ -229,6 +232,7 @@ callbacks = [checkpoint, reduce_alpha]
 # train model
 history = model.fit(trainX, trainY.reshape(trainY.shape[0], trainY.shape[1], 1),
                     epochs=55, batch_size=128, validation_split = 0.2,callbacks=callbacks, verbose=1)
+
 # save model
 model.save(project_path+'NMT_model1')
 
@@ -244,6 +248,7 @@ plt.plot(history.history['val_loss'])
 plt.legend(['train','validation'])
 #     hist_df.to_json(f)
 plt.show()
+
 
 # get 10 random ids of test samples
 idx = random.randint(testX.shape[0], size=10)
@@ -267,6 +272,7 @@ def get_word(n, tokenizer):
         if index == n:
             return word
     return None
+
 
 preds_text = []
 for i in preds:
