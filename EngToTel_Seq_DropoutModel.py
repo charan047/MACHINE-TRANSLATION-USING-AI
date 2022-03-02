@@ -189,10 +189,10 @@ def define_model(in_vocab,out_vocab, in_timesteps,out_timesteps,units):
     model = Sequential()
     model.add(Embedding(in_vocab, units, input_length=in_timesteps, mask_zero=True))
     model.add(LSTM(units))
-    model.add(Dropout(0.1))
+    model.add(Dropout(0.2))
     model.add(RepeatVector(out_timesteps))
     model.add(LSTM(units, return_sequences=True))
-    model.add(Dropout(0.1))
+    model.add(Dropout(0.2))
     model.add(TimeDistributed(Dense(out_vocab, activation='softmax')))
     return model
 
