@@ -115,7 +115,6 @@ data_df.head()
 # empty lists
 eng_l = []
 tel_l = []
-
 # populate the lists with sentence lengths
 for i in data_df["english_sentances"].values:
       eng_l.append(len(i.split()))
@@ -125,7 +124,7 @@ for i in data_df["telugu_sentances"].values:
 
 length_df = pd.DataFrame({'eng':eng_l, 'tel':tel_l})
 
-length_df.hist(bins = 30)
+length_df.hist(bins = 50)
 plt.show()
 
 # function to build a tokenizer
