@@ -310,3 +310,14 @@ hist_json_file = project_path+'history.json'
 with open(hist_json_file, mode='w') as f:
     hist_df.to_json(f)
     
+#this cell is to plot the loss & val_loss graph
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+epochs = range(1, len(loss) + 1)
+plt.plot(epochs, loss, 'y', label='Training loss')
+plt.plot(epochs, val_loss, 'r', label='Validation loss')
+plt.title('Training and validation loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
