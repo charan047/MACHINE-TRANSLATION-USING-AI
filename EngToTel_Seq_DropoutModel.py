@@ -321,3 +321,14 @@ plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.legend()
 plt.show()
+
+#this cell is to plot the train acc & val_acc graph
+acc = history.history['acc']
+val_acc = history.history['val_acc']
+plt.plot(epochs, acc, 'y', label='Training acc')
+plt.plot(epochs, val_acc, 'r', label='Validation acc')
+plt.title('Training and validation accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
