@@ -10,3 +10,8 @@ Decoding the source language & then re-encoding in into the target language usin
 
 Machine translation helps the people to understand the information of unknown language without the help of Human translator with minimum use of human resources.
 
+![image](https://user-images.githubusercontent.com/93238151/158334875-9d717c49-3558-49b0-8d59-1d1205233671.png)
+
+![image](https://user-images.githubusercontent.com/93238151/158334978-955dc6ed-cfe5-459f-a0af-f61e16e17b24.png)
+
+![image](https://user-images.githubusercontent.com/93238151/158335009-c9a24e7b-001d-40fe-8d53-26f8f833e24b.png)
